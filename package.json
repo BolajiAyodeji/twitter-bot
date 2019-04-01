@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/BolajiAyodeji/twitter-bot#readme",
   "dependencies": {
+    "dotenv": "^7.0.0",
     "twit": "^2.2.11"
   }
 }
