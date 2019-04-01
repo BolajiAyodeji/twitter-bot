@@ -10,3 +10,12 @@ let bot = new Twit({
   access_token_secret: process.env.BOLAJI_ACCESS_TOKEN_SECRET,
   timeout_ms: 60*1000
 })
+
+bot.post('statuses/update', {status: 'hello world!'},
+function(err, data, response) {
+  if(err) {
+    console.error(err);
+  } else {
+    console.log(data.text + ' was tweeted.')
+  }
+});
