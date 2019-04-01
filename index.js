@@ -38,7 +38,7 @@ const stream = bot.stream('statuses/filter', { track: ['bolaji ayodeji'] });
 
 stream.on('tweet', (tweet) => {
 
-	if ( tweet.user.id === me.id ) {
+	if ( tweet.user.id === bolaji.id ) {
         Twitter.like(tweet);
         Twitter.retweet(tweet);
 		return;
