@@ -1,5 +1,5 @@
 {
-  "name": "twitter-bots",
+  "name": "twitter-bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BolajiAyodeji/twitter-bots.git"
+    "url": "git+https://github.com/BolajiAyodeji/twitter-bot.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BolajiAyodeji/twitter-bots/issues"
+    "url": "https://github.com/BolajiAyodeji/twitter-bot/issues"
   },
-  "homepage": "https://github.com/BolajiAyodeji/twitter-bots#readme",
+  "homepage": "https://github.com/BolajiAyodeji/twitter-bot#readme",
   "dependencies": {
     "dotenv": "^7.0.0",
     "twit": "^2.2.11"
