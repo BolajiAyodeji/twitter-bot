@@ -1,7 +1,4 @@
 
-require('dotenv').config()
-
-let Twit = require('twit');
 
 let bot = new Twit({
   consumer_key: process.env.BOLAJI_CONSUMER_KEY,
@@ -11,11 +8,50 @@ let bot = new Twit({
   timeout_ms: 60*1000
 })
 
-bot.post('statuses/update', {status: 'hello world!'},
-function(err, data, response) {
-  if(err) {
-    console.error(err);
-  } else {
-    console.log(data.text + ' was tweeted.')
-  }
+
+const bolaji = {
+    id: 890634172716527616,
+    screen_name: 'iambolajiayo'
+};
+
+const emojis = ['👊', '👊', '🙌', '👍', '💁', '👌', '🙅', '👯'];
+
+
+function sendReply() {
+    const randomNumber = Math.random();
+    if (randomNumber > 0.3) return true;
+    return false;
+}
+
+function getEmoji() {
+    return emojis[Math.floor(Math.random() * emojis.length)];
+}
+
+function getTweet(tweet) {
+    const text = `Thanks for sharing! ${ getEmoji() }`;
+    return text;
+}
+
+
+const stream = bot.stream('statuses/filter', { track: ['bolaji ayodeji'] });
+
+stream.on('tweet', (tweet) => {
+
+	if ( tweet.user.id === me.id ) {
+        Twitter.like(tweet);
+        Twitter.retweet(tweet);
+		return;
+	}
+
+    if ( tweet.retweeted_status ) return;
+
+	if ( tweet.text.toLowerCase().includes('@iambolajiayo') ) {
+		if ( sendReply() ) {
+            Twitter.reply(tweet, getTweet(tweet));
+		}
+		return;
+	}
+
+    Twitter.reply(tweet, getTweet(tweet));
+
 });
