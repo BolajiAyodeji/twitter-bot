@@ -1,4 +1,7 @@
 
+require('dotenv').config()
+
+const Twit = require('twit');
 
 let bot = new Twit({
   consumer_key: process.env.BOLAJI_CONSUMER_KEY,
@@ -7,7 +10,6 @@ let bot = new Twit({
   access_token_secret: process.env.BOLAJI_ACCESS_TOKEN_SECRET,
   timeout_ms: 60*1000
 })
-
 
 const bolaji = {
     id: 890634172716527616,
@@ -32,7 +34,6 @@ function getTweet(tweet) {
     return text;
 }
 
-
 const stream = bot.stream('statuses/filter', { track: ['bolaji ayodeji'] });
 
 stream.on('tweet', (tweet) => {
@@ -50,7 +51,7 @@ stream.on('tweet', (tweet) => {
             Twitter.reply(tweet, getTweet(tweet));
 		}
 		return;
-	}
+  }
 
     Twitter.reply(tweet, getTweet(tweet));
 
